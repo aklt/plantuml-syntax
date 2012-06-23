@@ -1,11 +1,16 @@
 # Vim PlantUML Syntax/Plugin/FTDetect
 
-This is the PlantUML Syntax file from Anders Thøgersen.
+This is a vim syntax file for [PlantUML](http://plantuml.sourceforge.net).
 
-Additionally, I've added a Plugin which sets the makeprg for generating. It
-assumes you have a script in the path named 'plantuml' which takes plantuml
-files as argument.  You can define your own script file by settting
-g:plantuml_executable_script to something.
+The `filetype` will be set to `plantuml` for *.uml or *.plantuml files or if the
+first line of a file contains `@startuml`.
 
-There is also an FTDetect file which looks for '@startuml' on the first line to
-set the plantuml filetype.
+Additionally the `makeprg` is set to `plantuml` assuming you have this
+executable in your path.  This file could contain something like
+
+````sh
+#!/bin/bash
+java -jar $HOME/lib/java/plantuml.jar -tsvg $@
+````
+
+You can change the name of this file by setting `g:plantuml_executable_script`
