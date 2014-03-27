@@ -13,7 +13,9 @@ let g:loaded_plantuml_plugin = 1
 if !exists("g:plantuml_executable_script")
 	let g:plantuml_executable_script="plantuml"
 endif
-let s:makecommand=g:plantuml_executable_script." %"
+let s:path=expand("%")
+let s:path=fnameescape(s:path)
+let s:makecommand=g:plantuml_executable_script." ".s:path
 
 " define a sensible makeprg for plantuml files
 autocmd Filetype plantuml let &l:makeprg=s:makecommand
