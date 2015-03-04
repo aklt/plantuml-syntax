@@ -24,6 +24,6 @@ Then copy the files.
 ```
 cd ~
 git clone https://github.com/aklt/plantuml-syntax.git
-cp -r ~/plantums-syntax ~/.vim
+cp -r ~/plantuml-syntax ~/.vim
 ```
 On the Microsoft Windows operating system you will use slightly different commands.
