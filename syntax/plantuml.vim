@@ -23,7 +23,7 @@ setlocal isident+=#
 syntax match plantumlPreProc /\%(^@startuml\|^@enduml\)\|!\%(include\|ifdef\|define\|endif\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
-syntax keyword plantumlTypeKeyword namespace component package interface class interface enum object participant activity skinparam 
+syntax keyword plantumlTypeKeyword namespace component package interface class interface enum object participant activity skinparam abstract
 syntax keyword plantumlKeyword actor boundary control entity database partition title activate as deactivate note left right top bottom of end
 syntax keyword plantumlKeyword if then else endif
 
