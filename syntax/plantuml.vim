@@ -17,8 +17,8 @@ let b:current_syntax = "plantuml"
 
 syntax sync minlines=100
 
-setlocal isident+=@
-setlocal isident+=#
+setlocal iskeyword+=@
+setlocal iskeyword+=#
 
 syntax match plantumlPreProc /\%(^@startuml\|^@enduml\)\|!\%(include\|ifdef\|define\|endif\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
@@ -43,8 +43,8 @@ syntax region plantumlClass start=/{/ end=/\s*}/ contains=plantumlClassArrows,
 \                                                         @plantumlClassOp
 
 syntax match plantumlClassPublic      /+\w\+/ contained
-syntax match plantumlClassPrivate     /-\w\+/ contained 
-syntax match plantumlClassProtected   /#\w\+/ contained 
+syntax match plantumlClassPrivate     /-\w\+/ contained
+syntax match plantumlClassProtected   /#\w\+/ contained
 syntax match plantumlClassPackPrivate /\~\w\+/ contained
 
 syntax cluster plantumlClassOp contains=plantumlClassPublic,
