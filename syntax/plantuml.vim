@@ -17,8 +17,6 @@ let b:current_syntax = "plantuml"
 
 syntax sync minlines=100
 
-setlocal isident+=@
-
 syntax match plantumlPreProc /\%(^@startuml\|^@enduml\)\|!\%(include\|ifdef\|define\|endif\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
