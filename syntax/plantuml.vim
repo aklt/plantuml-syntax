@@ -13,6 +13,9 @@ if version < 600
   syntax clear
 endif
 
+let s:cpo_orig=&cpo
+set cpo&vim
+
 let b:current_syntax = "plantuml"
 
 syntax sync minlines=100
@@ -161,3 +164,6 @@ highlight default link plantumlColonLine Comment
 highlight default link plantumlActivityThing Type
 highlight default link plantumlActivitySynch Type
 highlight default link plantumlSkinparamKeyword Identifier
+
+let &cpo=s:cpo_orig
+unlet s:cpo_orig
