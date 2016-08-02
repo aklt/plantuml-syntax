@@ -43,8 +43,8 @@ syntax region plantumlClass start=/{/ end=/\s*}/ contains=plantumlClassArrows,
 \                                                         @plantumlClassOp
 
 syntax match plantumlClassPublic      /+\w\+/ contained
-syntax match plantumlClassPrivate     /-\w\+/ contained 
-syntax match plantumlClassProtected   /#\w\+/ contained 
+syntax match plantumlClassPrivate     /-\w\+/ contained
+syntax match plantumlClassProtected   /#\w\+/ contained
 syntax match plantumlClassPackPrivate /\~\w\+/ contained
 
 syntax cluster plantumlClassOp contains=plantumlClassPublic,
