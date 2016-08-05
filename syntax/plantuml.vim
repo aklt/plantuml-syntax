@@ -50,7 +50,6 @@ syntax match plantumlClassPackPrivate /\~\w\+/ contained
 syntax cluster plantumlClassOp contains=plantumlClassPublic,
 \                                       plantumlClassPrivate,
 \                                       plantumlClassProtected,
-\                                       plantumlClassProtected,
 \                                       plantumlClassPackPrivate
 
 " Strings
