@@ -16,3 +16,8 @@ endif
 let &l:makeprg=g:plantuml_executable_script . " " .  fnameescape(expand("%"))
 
 setlocal comments=s1:/',mb:',ex:'/,:' commentstring=/'%s'/ formatoptions-=t formatoptions+=croql
+
+let b:endwise_addition = '\=index(["note","legend"], submatch(0))!=-1 ? "end " . submatch(0) : "end"'
+let b:endwise_words = 'loop,group,alt,note,legend'
+let b:endwise_pattern = '^\s*\zs\<\(loop\|group\|alt\|note\ze[^:]*$\|legend\)\>.*$'
+let b:endwise_syngroups = 'plantumlKeyword'
