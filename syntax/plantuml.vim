@@ -6,7 +6,7 @@
 " TODO:         There are some bugs, add << >>
 "
 if exists("b:current_syntax")
-    finish
+  finish
 endif
 
 if version < 600

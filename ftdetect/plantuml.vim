@@ -5,7 +5,7 @@
 " Version:      0.1
 
 if did_filetype()
-	  finish
+  finish
 endif
 
 autocmd BufRead,BufNewFile * :if getline(1) =~ '^.*startuml.*$'| setfiletype plantuml | set filetype=plantuml | endif
