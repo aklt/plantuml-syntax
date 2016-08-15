@@ -13,6 +13,14 @@ if !exists("g:plantuml_executable_script")
   let g:plantuml_executable_script="plantuml"
 endif
 
+if exists("loaded_matchit")
+  let b:match_ignorecase = 0
+  let b:match_words =
+        \ '\<if\>:\<elseif\>:\<else\>:\<endif\>' .
+        \ ',\<\while\>:\<endwhile\>' .
+        \ ',\<note\>:\<end note\>'
+endif
+
 let &l:makeprg=g:plantuml_executable_script . " " .  fnameescape(expand("%"))
 
 setlocal comments=s1:/',mb:',ex:'/,:' commentstring=/'%s'/ formatoptions-=t formatoptions+=croql
