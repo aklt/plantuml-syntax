@@ -39,8 +39,9 @@ syntax region plantumlLabel start=/\[/ms=s+1 end=/\]/me=s-1 contained contains=p
 syntax match plantumlText /\%([0-9A-Za-zÀ-ÿ]\|\s\|[\.,;_-]\)\+/ contained
 
 " Class
-syntax region plantumlClass matchgroup=plantumlTypeKeyword start=/\s*class [^{]\+{/ end=/\s*}/ contains=plantumlKeyword,
-\                                                                                                       @plantumlClassOp
+syntax region plantumlClassString matchgroup=plantumlClass start=/\s*class\ze [^{]\+{/ end=/\s*\ze}/ contains=plantumlKeyword,
+\                                                                                                             @plantumlClassOp
+syntax match plantumlClass /\s*class\ze [^{]\+$/
 
 syntax match plantumlClassPublic      /+\w\+/ contained
 syntax match plantumlClassPrivate     /-\w\+/ contained
@@ -151,6 +152,7 @@ highlight default link plantumlDirectedOrVerticalArrowLR Special
 highlight default link plantumlDirectedOrVerticalArrowRL Special
 highlight default link plantumlLabel Special
 highlight default link plantumlText Label
+highlight default link plantumlClass Type
 highlight default link plantumlClassPublic Structure
 highlight default link plantumlClassPrivate Macro
 highlight default link plantumlClassProtected Statement
