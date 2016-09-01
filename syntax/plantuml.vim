@@ -23,10 +23,11 @@ syntax sync minlines=100
 syntax match plantumlPreProc /\%(^@startuml\|^@enduml\)\|!\%(include\|define\|undev\|ifdef\|endif\|ifndef\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
-syntax keyword plantumlTypeKeyword actor participant usecase class interface abstract enum component state object artifact folder rect node frame cloud database storage agent boundary control entity card
+syntax keyword plantumlTypeKeyword actor participant usecase abstract enum component state object artifact folder rect node frame cloud database storage agent boundary control entity card
 syntax keyword plantumlKeyword as also autonumber caption title newpage box alt opt loop par break critical note rnote hnote legend group left right of on link over end activate deactivate destroy create footbox hide show skinparam skin top bottom
 syntax keyword plantumlKeyword package namespace page up down if else elseif endif partition footer header center rotate ref return is repeat start stop while endwhile fork again kill
 syntax keyword plantumlKeyword then detach
+syntax keyword plantumlClassKeyword class interface
 
 syntax keyword plantumlCommentTODO XXX TODO FIXME NOTE contained
 syntax match plantumlColor /#[0-9A-Fa-f]\{6\}\>/
@@ -40,13 +41,16 @@ syntax match plantumlText /\%([0-9A-Za-zÀ-ÿ]\|\s\|[\.,;_-]\)\+/ contained
 
 " Class
 syntax region plantumlClass start=/{/ end=/\s*}/ contains=plantumlClassArrows,
-\                                                         plantumlKeyword,
-\                                                         @plantumlClassOp
+\                                                         plantumlClassKeyword,
+\                                                         @plantumlClassOp,
+\                                                         plantumlClassSeparator,
+\                                                         plantumlComment
 
 syntax match plantumlClassPublic      /+\w\+/ contained
 syntax match plantumlClassPrivate     /-\w\+/ contained
 syntax match plantumlClassProtected   /#\w\+/ contained
 syntax match plantumlClassPackPrivate /\~\w\+/ contained
+syntax match plantumlClassSeparator   /__.\+__\|==.\+==/ contained
 
 syntax cluster plantumlClassOp contains=plantumlClassPublic,
 \                                       plantumlClassPrivate,
@@ -57,7 +61,7 @@ syntax cluster plantumlClassOp contains=plantumlClassPublic,
 syntax match plantumlSpecialString /\\n/ contained
 syntax region plantumlString start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=plantumlSpecialString
 syntax region plantumlString start=/'/ skip=/\\\\\|\\'/ end=/'/ contains=plantumlSpecialString
-syntax match plantumlComment /'[^']*$/ contains=plantumlCommentTODO
+syntax match plantumlComment /'.*$/ contains=plantumlCommentTODO
 syntax region plantumlMultilineComment start=/\/'/ end=/'\// contains=plantumlCommentTODO
 
 " Labels with a colon
@@ -143,6 +147,7 @@ syntax keyword plantumlSkinparamKeyword stereotypeIBackgroundColor TitleFontColo
 " Highlight
 highlight default link plantumlCommentTODO Todo
 highlight default link plantumlKeyword Keyword
+highlight default link plantumlClassKeyword Keyword
 highlight default link plantumlTypeKeyword Type
 highlight default link plantumlPreProc PreProc
 highlight default link plantumlDir Constant
@@ -156,6 +161,7 @@ highlight default link plantumlClassPublic Structure
 highlight default link plantumlClassPrivate Macro
 highlight default link plantumlClassProtected Statement
 highlight default link plantumlClassPackPrivate Function
+highlight default link plantumlClassSeparator Comment
 highlight default link plantumlSpecialString Special
 highlight default link plantumlString String
 highlight default link plantumlComment Comment
