@@ -16,9 +16,12 @@ endif
 if exists("loaded_matchit")
   let b:match_ignorecase = 0
   let b:match_words =
-        \ '\<if\>:\<elseif\>:\<else\>:\<endif\>' .
-        \ ',\<\while\>:\<endwhile\>' .
-        \ ',\<note\>:\<end note\>'
+        \ '\(\<ref\>\|\<box\>\|\<opt\>\|\<alt\>\|\<group\>\|\<loop\>\|\<note\>\|\<legend\>\):\<else\>:\<end\>' .
+        \ ',\<if\>:\<elseif\>:\<else\>:\<endif\>' .
+        \ ',\<rnote\>:\<endrnote\>' .
+        \ ',\<hnote\>:\<endhnote\>' .
+        \ ',\<title\>:\<endtitle\>' .
+        \ ',\<\while\>:\<endwhile\>'
 endif
 
 let &l:makeprg=g:plantuml_executable_script . " " .  fnameescape(expand("%"))
