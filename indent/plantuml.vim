@@ -12,8 +12,9 @@ if exists("*GetPlantUMLIndent")
 endif
 
 let s:incIndent =
-            \ '^\s*\(loop\|alt\|opt\|group\|critical\|else\|legend\)\>\|' .
-            \ '^\s*\(note\|ref\)\>[^:]*$\|' .
+            \ '^\s*\(loop\|alt\|opt\|group\|critical\|else\|legend\|box\)\>\|' .
+            \ '^\s*\([hr]\?note\|ref\)\>[^:]*$\|' .
+            \ '^\s*title\s*$\|' .
             \ '^\s*state\>.*{'
 
 let s:decIndent = '^\s*\(end\|else\|}\)'
