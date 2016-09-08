@@ -13,7 +13,7 @@ endif
 
 let s:incIndent =
       \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\)\>\|' .
-      \ '^\s*\%([hr]\?note\|ref\)\>[^:]*$\|' .
+      \ '^\s*\%([hr]\?note\|ref\)\>\%(\%(\<as\>\)\@![^:]\)*$\|' .
       \ '^\s*title\s*$\|' .
       \ '^\s*skinparam\>.*{\s*$\|' .
       \ '^\s*\%(state\|class\|partition\|rectangle\)\>.*{'
