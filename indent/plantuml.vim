@@ -15,6 +15,7 @@ let s:incIndent =
             \ '^\s*\(loop\|alt\|opt\|group\|critical\|else\|legend\|box\)\>\|' .
             \ '^\s*\([hr]\?note\|ref\)\>[^:]*$\|' .
             \ '^\s*title\s*$\|' .
+            \ '^\s*skinparam\>.*{\s*$\|' .
             \ '^\s*state\>.*{'
 
 let s:decIndent = '^\s*\(end\|else\|}\)'
