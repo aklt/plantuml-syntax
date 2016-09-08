@@ -12,13 +12,13 @@ if exists("*GetPlantUMLIndent")
 endif
 
 let s:incIndent =
-      \ '^\s*\(loop\|alt\|opt\|group\|critical\|else\|legend\|box\)\>\|' .
-      \ '^\s*\([hr]\?note\|ref\)\>[^:]*$\|' .
+      \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\)\>\|' .
+      \ '^\s*\%([hr]\?note\|ref\)\>[^:]*$\|' .
       \ '^\s*title\s*$\|' .
       \ '^\s*skinparam\>.*{\s*$\|' .
-      \ '^\s*state\>.*{'
+      \ '^\s*\%(state\|class\|partition\|rectangle\)\>.*{'
 
-let s:decIndent = '^\s*\(end\|else\|}\)'
+let s:decIndent = '^\s*\%(end\|else\|}\)'
 
 function! GetPlantUMLIndent(...) abort
   "for current line, use arg if given or v:lnum otherwise
