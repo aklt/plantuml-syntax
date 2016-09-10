@@ -29,7 +29,7 @@ function! GetPlantUMLIndent(...) abort
   endif
 
   let pnum = prevnonblank(clnum-1)
-  let pindent = indent(pnum) 
+  let pindent = indent(pnum)
   let pline = getline(pnum)
   let cline = getline(clnum)
 
