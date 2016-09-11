@@ -1,7 +1,6 @@
 " Vim syntax file
 " Language:     PlantUML
 " Maintainer:   Anders Thøgersen <first name at bladre dot dk>
-" Last Change:  03-Apr-2011
 " Version:      0.2
 " TODO:         There are some bugs, add << >>
 "
