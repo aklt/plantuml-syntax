@@ -69,6 +69,9 @@ syntax match plantumlColonLine /:[^:]\+$/ contains=plantumlText
 syntax match plantumlActivityThing /([^)]*)/
 syntax match plantumlActivitySynch /===[^=]\+===/
 
+" Sequence diagram
+syntax match plantumlSequenceDivider /==[^=]\+==/
+
 " Skinparam keywords
 syntax keyword plantumlSkinparamKeyword activityArrowColor activityArrowFontColor activityArrowFontName
 syntax keyword plantumlSkinparamKeyword activityArrowFontSize activityArrowFontStyle activityBackgroundColor
@@ -159,6 +162,7 @@ highlight default link plantumlClassPrivate Macro
 highlight default link plantumlClassProtected Statement
 highlight default link plantumlClassPackPrivate Function
 highlight default link plantumlClassSeparator Comment
+highlight default link plantumlSequenceDivider Comment
 highlight default link plantumlSpecialString Special
 highlight default link plantumlString String
 highlight default link plantumlComment Comment
