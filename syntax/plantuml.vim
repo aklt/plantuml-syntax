@@ -70,7 +70,8 @@ syntax match plantumlActivityThing /([^)]*)/
 syntax match plantumlActivitySynch /===[^=]\+===/
 
 " Sequence diagram
-syntax match plantumlSequenceDivider /==[^=]\+==/
+syntax match plantumlSequenceDivider /^\s*==[^=]\+==\s*$/
+
 
 " Skinparam keywords
 syntax keyword plantumlSkinparamKeyword activityArrowColor activityArrowFontColor activityArrowFontName
