@@ -74,6 +74,8 @@ syntax match plantumlActivitySynch /===[^=]\+===/
 
 " Sequence diagram
 syntax match plantumlSequenceDivider /^\s*==[^=]\+==\s*$/
+syntax match plantumlSequenceSpace /^\s*|||\+\s*$/
+syntax match plantumlSequenceSpace /^\s*||\d\+||\+\s*$/
 
 " Usecase diagram
 syntax match plantumlUsecaseActor /:.\{-1,}:/ contains=plantumlSpecialString
@@ -169,6 +171,7 @@ highlight default link plantumlClassProtected Statement
 highlight default link plantumlClassPackPrivate Function
 highlight default link plantumlClassSeparator Comment
 highlight default link plantumlSequenceDivider Comment
+highlight default link plantumlSequenceSpace Comment
 highlight default link plantumlSpecialString Special
 highlight default link plantumlString String
 highlight default link plantumlComment Comment
