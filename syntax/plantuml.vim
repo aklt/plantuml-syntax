@@ -65,6 +65,9 @@ syntax region plantumlMultilineComment start=/\/'/ end=/'\// contains=plantumlCo
 " Labels with a colon
 syntax match plantumlColonLine /:[^:]\+$/ contains=plantumlText
 
+" Stereotypes
+syntax match plantumlStereotype /<<.\{-1,}>>/ contains=plantumlSpecialString
+
 " Activity diagram
 syntax match plantumlActivityThing /([^)]*)/
 syntax match plantumlActivitySynch /===[^=]\+===/
@@ -167,6 +170,7 @@ highlight default link plantumlColonLine Comment
 highlight default link plantumlActivityThing Type
 highlight default link plantumlActivitySynch Type
 highlight default link plantumlSkinparamKeyword Identifier
+highlight default link plantumlStereotype Type
 
 let &cpo=s:cpo_orig
 unlet s:cpo_orig
