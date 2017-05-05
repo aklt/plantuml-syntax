@@ -69,6 +69,9 @@ syntax match plantumlColonLine /\S\@<=\s*\zs:.\+$/ contains=plantumlSpecialStrin
 syntax match plantumlActivityThing /([^)]*)/
 syntax match plantumlActivitySynch /===[^=]\+===/
 
+" Usecase diagram
+syntax match plantumlUsecaseActor /:.\{-1,}:/ contains=plantumlSpecialString
+
 " Skinparam keywords
 syntax keyword plantumlSkinparamKeyword activityArrowColor activityArrowFontColor activityArrowFontName
 syntax keyword plantumlSkinparamKeyword activityArrowFontSize activityArrowFontStyle activityBackgroundColor
@@ -167,6 +170,7 @@ highlight default link plantumlColonLine Comment
 highlight default link plantumlActivityThing Type
 highlight default link plantumlActivitySynch Type
 highlight default link plantumlSkinparamKeyword Identifier
+highlight default link plantumlUsecaseActor String
 
 let &cpo=s:cpo_orig
 unlet s:cpo_orig
