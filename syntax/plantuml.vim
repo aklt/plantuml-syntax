@@ -63,7 +63,7 @@ syntax match plantumlComment /'.*$/ contains=plantumlCommentTODO
 syntax region plantumlMultilineComment start=/\/'/ end=/'\// contains=plantumlCommentTODO
 
 " Labels with a colon
-syntax match plantumlColonLine /\S\@<=\s*\zs:.\+$/ contains=plantumlSpecialString,plantumlText
+syntax match plantumlColonLine /\S\@<=\s*\zs:.\+$/ contains=plantumlSpecialString
 
 " Activity diagram
 syntax match plantumlActivityThing /([^)]*)/
