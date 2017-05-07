@@ -38,7 +38,7 @@ syntax region plantumlLabel start=/\[/ms=s+1 end=/\]/me=s-1 contained contains=p
 syntax match plantumlText /\%([0-9A-Za-zÀ-ÿ]\|\s\|[\.,;_-]\)\+/ contained
 
 " Class
-syntax region plantumlClass start=/\%(class\s[^{]\+\)\@<=\zs{/ end=/\s*}/ contains=plantumlClassArrows,
+syntax region plantumlClass start=/\%(class\s[^{]\+\)\@<=\zs{/ end=/^\s*}/ contains=plantumlClassArrows,
 \                                                                                  plantumlClassKeyword,
 \                                                                                  @plantumlClassOp,
 \                                                                                  plantumlClassSeparator,
