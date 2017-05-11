@@ -156,8 +156,8 @@ highlight default link plantumlPreProc PreProc
 highlight default link plantumlDir Constant
 highlight default link plantumlColor Constant
 highlight default link plantumlHorizontalArrow Identifier
-highlight default link plantumlDirectedOrVerticalArrowLR Special
-highlight default link plantumlDirectedOrVerticalArrowRL Special
+highlight default link plantumlDirectedOrVerticalArrowLR Identifier
+highlight default link plantumlDirectedOrVerticalArrowRL Identifier
 highlight default link plantumlLabel Special
 highlight default link plantumlText Label
 highlight default link plantumlClass Type
