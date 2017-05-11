@@ -1,12 +1,11 @@
-scriptencoding utf-8
 " Vim syntax file
 " Language:     PlantUML
 " Maintainer:   Anders Thøgersen <first name at bladre dot dk>
-" Version:      0.2
-"
 if exists('b:current_syntax')
   finish
 endif
+
+scriptencoding utf-8
 
 if v:version < 600
   syntax clear

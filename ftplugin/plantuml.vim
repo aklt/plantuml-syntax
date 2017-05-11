@@ -1,8 +1,3 @@
-" Vim plugin file
-" Language:     PlantUML
-" Maintainer:   Aaron C. Meadows < language name at shadowguarddev dot com>
-" Version:      0.1
-
 if exists('b:loaded_plantuml_plugin')
   finish
 endif

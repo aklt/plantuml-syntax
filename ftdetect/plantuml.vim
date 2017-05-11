@@ -1,8 +1,3 @@
-" Vim ftdetect file
-" Language:     PlantUML
-" Maintainer:   Aaron C. Meadows < language name at shadowguarddev dot com>
-" Version:      0.1
-
 if did_filetype()
   finish
 endif
