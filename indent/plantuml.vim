@@ -1,4 +1,4 @@
-if exists("b:did_indent")
+if exists('b:did_indent')
   finish
 endif
 let b:did_indent = 1
@@ -7,7 +7,7 @@ setlocal indentexpr=GetPlantUMLIndent()
 setlocal indentkeys=o,O,<CR>,<:>,!^F,0end,0else,}
 
 " only define the indent code once
-if exists("*GetPlantUMLIndent")
+if exists('*GetPlantUMLIndent')
   finish
 endif
 
