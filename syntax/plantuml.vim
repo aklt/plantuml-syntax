@@ -63,7 +63,7 @@ syntax match plantumlComment /'.*$/ contains=plantumlCommentTODO
 syntax region plantumlMultilineComment start=/\/'/ end=/'\// contains=plantumlCommentTODO
 
 " Labels with a colon
-syntax match plantumlColonLine /:[^:]\+$/ contains=plantumlText
+syntax match plantumlColonLine /\S\@<=\s*\zs:.\+$/ contains=plantumlSpecialString
 
 " Activity diagram
 syntax match plantumlActivityThing /([^)]*)/
@@ -72,6 +72,8 @@ syntax match plantumlActivitySynch /===[^=]\+===/
 " Sequence diagram
 syntax match plantumlSequenceDivider /^\s*==[^=]\+==\s*$/
 
+" Usecase diagram
+syntax match plantumlUsecaseActor /:.\{-1,}:/ contains=plantumlSpecialString
 
 " Skinparam keywords
 syntax keyword plantumlSkinparamKeyword activityArrowColor activityArrowFontColor activityArrowFontName
@@ -172,6 +174,7 @@ highlight default link plantumlColonLine Comment
 highlight default link plantumlActivityThing Type
 highlight default link plantumlActivitySynch Type
 highlight default link plantumlSkinparamKeyword Identifier
+highlight default link plantumlUsecaseActor String
 
 let &cpo=s:cpo_orig
 unlet s:cpo_orig
