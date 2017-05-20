@@ -99,6 +99,7 @@ syntax match plantumlStereotype /<<.\{-1,}>>/ contains=plantumlSpecialString
 " Activity diagram
 syntax match plantumlActivityThing /([^)]*)/
 syntax match plantumlActivitySynch /===[^=]\+===/
+syntax region plantumlActivityLabel start=/:/ end=/[;|<>/\]}]$/ contains=plantumlSpecialString
 
 " Sequence diagram
 syntax match plantumlSequenceDivider /^\s*==[^=]\+==\s*$/
@@ -298,6 +299,7 @@ highlight default link plantumlMultilineComment Comment
 highlight default link plantumlColonLine Comment
 highlight default link plantumlActivityThing Type
 highlight default link plantumlActivitySynch Type
+highlight default link plantumlActivityLabel String
 highlight default link plantumlSkinparamKeyword Identifier
 highlight default link plantumlUsecaseActor String
 highlight default link plantumlStereotype Type
