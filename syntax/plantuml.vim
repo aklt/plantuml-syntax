@@ -59,10 +59,15 @@ syntax keyword plantumlColor Sienna Silver SkyBlue SlateBlue SlateGray SlateGrey
 syntax keyword plantumlColor TECHNOLOGY Tan Teal Thistle Tomato Turquoise Violet Wheat White WhiteSmoke
 syntax keyword plantumlColor Yellow YellowGreen
 
-" Arrows - Differentiate between horizontal and vertical arrows
-syntax match plantumlHorizontalArrow /\%([-\.]\%(|>\|>\|\*\|o\>\|\\\\\|\\\|\/\/\|\/\|\.\|-\)\|\%(<|\|<\|\*\|\<o\|\\\\\|\\\|\/\/\|\/\)[\.-]\)\%(\[[^\]]*\]\)\?/ contains=plantumlText
-syntax match plantumlDirectedOrVerticalArrowLR /[-\.]\w\{,5}[-\.]\%(|>\|>>\|>\|\*\|o\>\|\\\\\|\\\|\/\/\|\/\|\.\|-\)\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine
-syntax match plantumlDirectedOrVerticalArrowRL /\%(<|\|<<\|<\|\*\|\<o\|\\\\\|\\\|\/\/\|\/\)[-\.]\w\{,5}[-\.]\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine
+" Arrows
+syntax match plantumlArrow /\%(\w\|)\)\+\s*\zs\([.-]\)\1\+\ze\s*\%(\w\|(\)\+/
+
+syntax match plantumlClassRelationLR /\([-.]\)\1*\%(\w\{,5\}\1\+\)\?\%(|>\|>\|*\|o\|x\|#\|{\|+\|\^\)/ contains=plantumlArrowDirectedLine
+syntax match plantumlClassRelationRL /\%(<|\|<\|*\|o\|x\|#\|}\|+\|\^\)\([-.]\)\1*\%(\w\{,5\}\1\+\)\?/ contains=plantumlArrowDirectedLine
+
+syntax match plantumlArrowLR /\[\?\([-.]\)\1*\%(\w\{,5}\1\+\)\?\(>\|\\\|\/\)\2\?[ox]\?\]\?\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine
+syntax match plantumlArrowRL /\[\?[ox]\?\(<\|\\\|\/\)\1\?\([-.]\)\2*\%(\w\{,5}\2\+\)\?\]\?\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine
+syntax match plantumlArrowBoth /[ox]\?\(<\|\\\|\/\)\1\?\([-.]\)\2*\%(\w\{,5}\2\+\)\?\(>\|\\\|\/\)\3\?[ox]\?/ contains=plantumlArrowDirectedLine
 syntax region plantumlText oneline start=/\[/ms=s+1 end=/\]/me=s-1 contained
 
 syntax match plantumlArrowDirectedLine /\([-.]\)\%(le\?f\?t\?\|ri\?g\?h\?t\?\|up\?\|do\?w\?n\?\)\1/ contained
@@ -285,10 +290,13 @@ highlight default link plantumlTypeKeyword Type
 highlight default link plantumlPreProc PreProc
 highlight default link plantumlDir Constant
 highlight default link plantumlColor Constant
-highlight default link plantumlHorizontalArrow Identifier
-highlight default link plantumlDirectedOrVerticalArrowLR Identifier
-highlight default link plantumlDirectedOrVerticalArrowRL Identifier
+highlight default link plantumlArrow Identifier
+highlight default link plantumlArrowBoth Identifier
+highlight default link plantumlArrowLR Identifier
+highlight default link plantumlArrowRL Identifier
 highlight default link plantumlArrowDirectedLine Identifier
+highlight default link plantumlClassRelationLR Identifier
+highlight default link plantumlClassRelationRL Identifier
 highlight default link plantumlLabel Special
 highlight default link plantumlText Label
 highlight default link plantumlClass Type
