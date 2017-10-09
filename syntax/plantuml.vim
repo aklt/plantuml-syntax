@@ -100,7 +100,7 @@ syntax region plantumlMultilineComment start=/\/'/ end=/'\// contains=plantumlCo
 syntax match plantumlColonLine /\S\@<=\s*\zs:.\+$/ contains=plantumlSpecialString
 
 " Stereotypes
-syntax match plantumlStereotype /<<.\{-1,}>>/ contains=plantumlSpecialString
+syntax match plantumlStereotype /<<[^-.]\+>>/ contains=plantumlSpecialString
 
 " Activity diagram
 syntax match plantumlActivityThing /([^)]*)/
@@ -288,6 +288,7 @@ highlight default link plantumlColor Constant
 highlight default link plantumlHorizontalArrow Identifier
 highlight default link plantumlDirectedOrVerticalArrowLR Identifier
 highlight default link plantumlDirectedOrVerticalArrowRL Identifier
+highlight default link plantumlArrowDirectedLine Identifier
 highlight default link plantumlLabel Special
 highlight default link plantumlText Label
 highlight default link plantumlClass Type
