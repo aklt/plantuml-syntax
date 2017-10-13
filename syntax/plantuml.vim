@@ -60,7 +60,7 @@ syntax keyword plantumlColor TECHNOLOGY Tan Teal Thistle Tomato Turquoise Violet
 syntax keyword plantumlColor Yellow YellowGreen
 
 " Arrows
-syntax match plantumlArrow /\%(\w\|)\)\s*\zs\([.-]\)\1\+\ze\s*\%(\w\|(\)/
+syntax match plantumlArrow /.\@=\([.-]\)\1\+\ze\s*\%(\w\|(\)/
 
 syntax match plantumlClassRelationLR /\([-.]\)\1*\%(\w\{,5\}\1\+\)\?\%(|>\|>\|*\|o\|x\|#\|{\|+\|\^\)/ contains=plantumlArrowDirectedLine
 syntax match plantumlClassRelationRL /\%(<|\|<\|*\|o\|x\|#\|}\|+\|\^\)\([-.]\)\1*\%(\w\{,5\}\1\+\)\?/ contains=plantumlArrowDirectedLine
@@ -116,6 +116,8 @@ syntax match plantumlActivityLabel /\%(^\%(#\S\+\)\?\)\@<=:\_[^;|<>/\]}]\+[;|<>/
 syntax match plantumlSequenceDivider /^\s*==[^=]\+==\s*$/
 syntax match plantumlSequenceSpace /^\s*|||\+\s*$/
 syntax match plantumlSequenceSpace /^\s*||\d\+||\+\s*$/
+syntax match plantumlSequenceDelay /^\.\{3}$/
+syntax region plantumlText oneline matchgroup=plantumlSequenceDelay start=/^\.\{3}/ end=/\.\{3}$/
 
 " Usecase diagram
 syntax match plantumlUsecaseActor /:.\{-1,}:/ contains=plantumlSpecialString
@@ -307,6 +309,7 @@ highlight default link plantumlClassPackPrivate Function
 highlight default link plantumlClassSeparator Comment
 highlight default link plantumlSequenceDivider Comment
 highlight default link plantumlSequenceSpace Comment
+highlight default link plantumlSequenceDelay Identifier
 highlight default link plantumlSpecialString Special
 highlight default link plantumlString String
 highlight default link plantumlComment Comment
