@@ -299,7 +299,6 @@ highlight default link plantumlArrowRL Identifier
 highlight default link plantumlArrowDirectedLine Identifier
 highlight default link plantumlClassRelationLR Identifier
 highlight default link plantumlClassRelationRL Identifier
-highlight default link plantumlLabel Special
 highlight default link plantumlText Label
 highlight default link plantumlClass Type
 highlight default link plantumlClassPublic Structure
