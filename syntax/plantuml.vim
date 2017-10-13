@@ -60,7 +60,7 @@ syntax keyword plantumlColor TECHNOLOGY Tan Teal Thistle Tomato Turquoise Violet
 syntax keyword plantumlColor Yellow YellowGreen
 
 " Arrows
-syntax match plantumlArrow /\%(\w\|)\)\+\s*\zs\([.-]\)\1\+\ze\s*\%(\w\|(\)\+/
+syntax match plantumlArrow /\%(\w\|)\)\s*\zs\([.-]\)\1\+\ze\s*\%(\w\|(\)/
 
 syntax match plantumlClassRelationLR /\([-.]\)\1*\%(\w\{,5\}\1\+\)\?\%(|>\|>\|*\|o\|x\|#\|{\|+\|\^\)/ contains=plantumlArrowDirectedLine
 syntax match plantumlClassRelationRL /\%(<|\|<\|*\|o\|x\|#\|}\|+\|\^\)\([-.]\)\1*\%(\w\{,5\}\1\+\)\?/ contains=plantumlArrowDirectedLine
