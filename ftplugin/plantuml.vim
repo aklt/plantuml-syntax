@@ -20,7 +20,7 @@ if exists('loaded_matchit')
         \ ',\<\while\>:\<endwhile\>'
 endif
 
-let &l:makeprg=g:plantuml_executable_script . ' ' .  fnameescape(expand('%'))
+let &l:makeprg=g:plantuml_executable_script . ' %'
 
 setlocal comments=s1:/',mb:',ex:'/,:' commentstring=/'%s'/ formatoptions-=t formatoptions+=croql
 
