@@ -17,7 +17,7 @@ let s:incIndent =
       \ '^\s*[hr]\?note\>\%(\%("[^"]*" \<as\>\)\@![^:]\)*$\|' .
       \ '^\s*title\s*$\|' .
       \ '^\s*skinparam\>.*{\s*$\|' .
-      \ '^\s*\%(state\|class\|partition\|rectangle\|enum\|interface\|namespace\|object\)\>.*{'
+      \ '^\s*\%(state\|class\|partition\|rectangle\|enum\|interface\|namespace\|object\|package\)\>.*{'
 
 let s:decIndent = '^\s*\%(end\|else\|}\)'
 
