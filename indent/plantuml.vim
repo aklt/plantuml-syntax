@@ -1,3 +1,9 @@
+scriptencoding utf-8
+" Vim indent file
+" Language:     PlantUML
+" Maintainer:   Anders Thøgersen <first name at bladre dot dk>
+" License:      VIM LICENSE
+
 if exists('b:did_indent')
   finish
 endif
