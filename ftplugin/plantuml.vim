@@ -9,6 +9,8 @@ if !exists('g:plantuml_executable_script')
   let g:plantuml_executable_script='plantuml'
 endif
 
+command! PreviewUml :!open -a "Google Chrome" %
+
 if exists('loaded_matchit')
   let b:match_ignorecase = 0
   let b:match_words =

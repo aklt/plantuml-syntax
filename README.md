@@ -1,4 +1,4 @@
-# Vim PlantUML Syntax/Plugin/FTDetect
+# Vim PlantUML Syntax/Plugin/FTDetect/Command
 
 This is a vim syntax file for [PlantUML](http://plantuml.com).
 
@@ -14,3 +14,6 @@ java -jar $HOME/lib/java/plantuml.jar -tsvg $@
 ````
 
 You can change the name of this file by setting `g:plantuml_executable_script`
+
+The `:PreviewUml` command to show preview in Google Chrome is provided.
+Install [PlantUML Viewer](https://chrome.google.com/webstore/detail/plantuml-viewer/legbfeljfbjgfifnkmpoajgpgejojooj) to use the command.
