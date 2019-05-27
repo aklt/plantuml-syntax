@@ -20,7 +20,9 @@ if exists('loaded_matchit')
         \ ',\<\while\>:\<endwhile\>'
 endif
 
-let &l:makeprg=g:plantuml_executable_script . ' ' .  fnameescape(expand('%'))
+if !(filereadable("Makefile") || filereadable("makefile") || filereadable("GNUmakefile"))
+  let &l:makeprg=g:plantuml_executable_script . ' ' .  fnameescape(expand('%'))
+endif
 
 setlocal comments=s1:/',mb:',ex:'/,:' commentstring=/'%s'/ formatoptions-=t formatoptions+=croql
 
