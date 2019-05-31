@@ -31,7 +31,7 @@ syntax keyword plantumlKeyword activate again also alt as autonumber bottom box 
 syntax keyword plantumlKeyword critical deactivate destroy down else elseif end endif endwhile footbox footer
 syntax keyword plantumlKeyword fork group header hide hnote if is kill left legend link loop namespace newpage
 syntax keyword plantumlKeyword note of on opt over package page par partition ref repeat return right rnote
-syntax keyword plantumlKeyword rotate show skin skinparam start stop title top up while
+syntax keyword plantumlKeyword rotate show skin skinparam split start stop title top up while
 " Not in 'java - jar plantuml.jar - language' output
 syntax keyword plantumlKeyword then detach sprite
 
