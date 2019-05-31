@@ -59,12 +59,18 @@ syntax keyword plantumlColor Sienna Silver SkyBlue SlateBlue SlateGray SlateGrey
 syntax keyword plantumlColor TECHNOLOGY Tan Teal Thistle Tomato Turquoise Violet Wheat White WhiteSmoke
 syntax keyword plantumlColor Yellow YellowGreen
 
-" Arrows - Differentiate between horizontal and vertical arrows
-syntax match plantumlHorizontalArrow /\%([-\.]\%(|>\|>\|\*\|o\>\|\\\\\|\\\|\/\/\|\/\|\.\|-\)\|\%(<|\|<\|\*\|\<o\|\\\\\|\\\|\/\/\|\/\)[\.-]\)\%(\[[^\]]*\]\)\?/ contains=plantumlLabel
-syntax match plantumlDirectedOrVerticalArrowLR /[-\.]\%(le\?f\?t\?\|ri\?g\?h\?t\?\|up\?\|do\?w\?n\?\)\?[-\.]\%(|>\|>>\|>\|\*\|o\>\|\\\\\|\\\|\/\/\|\/\|\.\|-\)\%(\[[^\]]*\]\)\?/ contains=plantumlLabel
-syntax match plantumlDirectedOrVerticalArrowRL /\%(<|\|<<\|<\|\*\|\<o\|\\\\\|\\\|\/\/\|\/\)[-\.]\%(le\?f\?t\?\|ri\?g\?h\?t\?\|up\?\|do\?w\?n\?\)\?[-\.]\%(\[[^\]]*\]\)\?/ contains=plantumlLabel
-syntax region plantumlLabel start=/\[/ms=s+1 end=/\]/me=s-1 contained contains=plantumlText
-syntax match plantumlText /\%([0-9A-Za-z\0xc0-\0xff]\|\s\|[\.,;_-]\)\+/ contained
+" Arrows
+syntax match plantumlArrow /.\@=\([.-]\)\1\+\ze\s*\%(\w\|(\)/
+
+syntax match plantumlClassRelationLR /\([-.]\)\1*\%(\w\{,5\}\1\+\)\?\%(|>\|>\|*\|o\|x\|#\|{\|+\|\^\)/ contains=plantumlArrowDirectedLine
+syntax match plantumlClassRelationRL /\%(<|\|<\|*\|o\|x\|#\|}\|+\|\^\)\([-.]\)\1*\%(\w\{,5\}\1\+\)\?/ contains=plantumlArrowDirectedLine
+
+syntax match plantumlArrowLR /\[\?\([-.]\)\1*\%(\w\{,5}\1\+\)\?\(>\|\\\|\/\)\2\?[ox]\?\]\?\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine
+syntax match plantumlArrowRL /\[\?[ox]\?\(<\|\\\|\/\)\1\?\([-.]\)\2*\%(\w\{,5}\2\+\)\?\]\?\%(\[[^\]]*\]\)\?/ contains=plantumlText,plantumlArrowDirectedLine
+syntax match plantumlArrowBoth /[ox]\?\(<\|\\\|\/\)\1\?\([-.]\)\2*\%(\w\{,5}\2\+\)\?\(>\|\\\|\/\)\3\?[ox]\?/ contains=plantumlArrowDirectedLine
+syntax region plantumlText oneline start=/\[/ms=s+1 end=/\]/me=s-1 contained
+
+syntax match plantumlArrowDirectedLine /\([-.]\)\%(l\%[eft]\|r\%[ight]\|up\?\|d\%[own]\)\1/ contained
 
 " Note
 syntax region plantumlNoteMultiLine start=/\%(^\s*[rh]\?note\)\@<=\s\%([^:"]\+$\)\@=/ end=/^\%(\s*end \?[rh]\?note$\)\@=/ contains=plantumlSpecialString,plantumlNoteMultiLineStart
@@ -99,7 +105,7 @@ syntax region plantumlMultilineComment start=/\/'/ end=/'\// contains=plantumlCo
 syntax match plantumlColonLine /\S\@<=\s*\zs:.\+$/ contains=plantumlSpecialString
 
 " Stereotypes
-syntax match plantumlStereotype /<<.\{-1,}>>/ contains=plantumlSpecialString
+syntax match plantumlStereotype /<<[^-.]\+>>/ contains=plantumlSpecialString
 
 " Activity diagram
 syntax match plantumlActivityThing /([^)]*)/
@@ -110,6 +116,8 @@ syntax match plantumlActivityLabel /\%(^\%(#\S\+\)\?\)\@<=:\_[^;|<>/\]}]\+[;|<>/
 syntax match plantumlSequenceDivider /^\s*==[^=]\+==\s*$/
 syntax match plantumlSequenceSpace /^\s*|||\+\s*$/
 syntax match plantumlSequenceSpace /^\s*||\d\+||\+\s*$/
+syntax match plantumlSequenceDelay /^\.\{3}$/
+syntax region plantumlText oneline matchgroup=plantumlSequenceDelay start=/^\.\{3}/ end=/\.\{3}$/
 
 " Usecase diagram
 syntax match plantumlUsecaseActor /:.\{-1,}:/ contains=plantumlSpecialString
@@ -284,10 +292,13 @@ highlight default link plantumlTypeKeyword Type
 highlight default link plantumlPreProc PreProc
 highlight default link plantumlDir Constant
 highlight default link plantumlColor Constant
-highlight default link plantumlHorizontalArrow Identifier
-highlight default link plantumlDirectedOrVerticalArrowLR Identifier
-highlight default link plantumlDirectedOrVerticalArrowRL Identifier
-highlight default link plantumlLabel Special
+highlight default link plantumlArrow Identifier
+highlight default link plantumlArrowBoth Identifier
+highlight default link plantumlArrowLR Identifier
+highlight default link plantumlArrowRL Identifier
+highlight default link plantumlArrowDirectedLine Identifier
+highlight default link plantumlClassRelationLR Identifier
+highlight default link plantumlClassRelationRL Identifier
 highlight default link plantumlText Label
 highlight default link plantumlClass Type
 highlight default link plantumlClassPublic Structure
@@ -297,6 +308,7 @@ highlight default link plantumlClassPackPrivate Function
 highlight default link plantumlClassSeparator Comment
 highlight default link plantumlSequenceDivider Comment
 highlight default link plantumlSequenceSpace Comment
+highlight default link plantumlSequenceDelay Identifier
 highlight default link plantumlSpecialString Special
 highlight default link plantumlString String
 highlight default link plantumlComment Comment
