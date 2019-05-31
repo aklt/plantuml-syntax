@@ -11,14 +11,6 @@ if exists('*GetPlantUMLIndent')
   finish
 endif
 
-let s:incIndent =
-      \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\)\>\|' .
-      \ '^\s*ref\>[^:]*$\|' .
-      \ '^\s*[hr]\?note\>\%(\%("[^"]*" \<as\>\)\@![^:]\)*$\|' .
-      \ '^\s*title\s*$\|' .
-      \ '^\s*skinparam\>.*{\s*$\|' .
-      \ '^\s*\%(state\|class\|partition\|rectangle\|enum\|interface\|namespace\|object\)\>.*{'
-
 let s:decIndent = '^\s*\%(end\|else\|}\)'
 
 function! GetPlantUMLIndent(...) abort
@@ -34,14 +26,16 @@ function! GetPlantUMLIndent(...) abort
   let pline = getline(pnum)
   let cline = getline(clnum)
 
+  let incIndent = s:getIncIndent()
+
   if cline =~ s:decIndent
-    if pline =~ s:incIndent
+    if pline =~ incIndent
       return pindent
     else
       return pindent - shiftwidth()
     endif
 
-  elseif pline =~ s:incIndent
+  elseif pline =~ incIndent
     return pindent + shiftwidth()
   endif
 
@@ -52,4 +46,33 @@ endfunction
 function! s:insidePlantUMLTags(lnum) abort
   call cursor(a:lnum, 1)
   return search('@startuml', 'Wbn') && search('@enduml', 'Wn')
+endfunction
+
+function! s:listSyntax(syntaxKeyword) abort
+  " Get a list of words assigned to a syntax keyword
+  " The 'syntax list <syntax keyword>' command returns
+  " a string with the keyword itself, followed by xxx,
+  " on which we can split to extract the keywords string.
+  " This string must then be split on whitespace
+  let syntaxWords = split(
+        \ execute('syntax list ' . a:syntaxKeyword),
+        \ a:syntaxKeyword . ' xxx ')[-1]
+  return split(syntaxWords)
+endfunction
+
+function! s:typeKeywordIncPattern() abort
+  " Extract keywords for plantumlTypeKeyword, returning the inc pattern
+  let syntaxWords = join(s:listSyntax('plantumlTypeKeyword'), '\|')
+  return '^\s*\%(' . syntaxWords . '\)\>.*{'
+endfunction
+
+function! s:getIncIndent() abort
+  " Function to determine the incIndent pattern
+  return
+        \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\)\>\|' .
+        \ '^\s*ref\>[^:]*$\|' .
+        \ '^\s*[hr]\?note\>\%(\%("[^"]*" \<as\>\)\@![^:]\)*$\|' .
+        \ '^\s*title\s*$\|' .
+        \ '^\s*skinparam\>.*{\s*$\|' .
+        \ s:typeKeywordIncPattern()
 endfunction
