@@ -18,7 +18,7 @@ let b:current_syntax = 'plantuml'
 
 syntax sync minlines=100
 
-syntax match plantumlPreProc /\%(^@startuml\|^@enduml\)\|!\%(define|definelong|else|enddefinelong|endif|if|ifdef|ifndef|include|pragma|undef\)\s*.*/ contains=plantumlDir
+syntax match plantumlPreProc /\%(^@startuml\|^@enduml\)\|!\%(define\|definelong\|else\|enddefinelong\|endif\|exit\|if\|ifdef\|ifndef\|include\|pragma\|undef\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
 syntax keyword plantumlTypeKeyword abstract actor agent archimate artifact boundary card cloud component control
