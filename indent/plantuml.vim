@@ -69,7 +69,7 @@ endfunction
 function! s:getIncIndent() abort
   " Function to determine the incIndent pattern
   return
-        \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\)\>\|' .
+        \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\|fork\|split\)\>\|' .
         \ '^\s*ref\>[^:]*$\|' .
         \ '^\s*[hr]\?note\>\%(\%("[^"]*" \<as\>\)\@![^:]\)*$\|' .
         \ '^\s*title\s*$\|' .
