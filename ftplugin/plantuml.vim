@@ -8,8 +8,8 @@ if exists('b:loaded_plantuml_plugin')
   finish
 endif
 let b:loaded_plantuml_plugin = 1
-let s:cpo_save = &cpo
-set cpo&vim
+let s:cpo_save = &cpoptions
+set cpoptions&vim
 
 if !exists('g:plantuml_executable_script')
   let g:plantuml_executable_script='plantuml'
@@ -36,5 +36,5 @@ let b:endwise_words = 'loop,group,alt,note,legend'
 let b:endwise_pattern = '^\s*\zs\<\(loop\|group\|alt\|note\ze[^:]*$\|legend\)\>.*$'
 let b:endwise_syngroups = 'plantumlKeyword'
 
-let &cpo = s:cpo_save
+let &cpoptions = s:cpo_save
 unlet s:cpo_save

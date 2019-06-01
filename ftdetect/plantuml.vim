@@ -3,5 +3,7 @@ scriptencoding utf-8
 " Language:     PlantUML
 " Maintainer:   Anders Thøgersen <first name at bladre dot dk>
 " License:      VIM LICENSE
-autocmd BufRead,BufNewFile * if !did_filetype() && getline(1) =~# '@startuml\>'| setfiletype plantuml | endif
-autocmd BufRead,BufNewFile *.pu,*.uml,*.plantuml,*.puml set filetype=plantuml
+augroup PlantUML
+  autocmd BufRead,BufNewFile * if !did_filetype() && getline(1) =~# '@startuml\>'| setfiletype plantuml | endif
+  autocmd BufRead,BufNewFile *.pu,*.uml,*.plantuml,*.puml set filetype=plantuml
+augroup END

@@ -11,8 +11,8 @@ if v:version < 600
   syntax clear
 endif
 
-let s:cpo_orig=&cpo
-set cpo&vim
+let s:cpo_orig=&cpoptions
+set cpoptions&vim
 
 let b:current_syntax = 'plantuml'
 
@@ -322,5 +322,5 @@ highlight default link plantumlNoteMultiLine String
 highlight default link plantumlUsecaseActor String
 highlight default link plantumlStereotype Type
 
-let &cpo=s:cpo_orig
+let &cpoptions=s:cpo_orig
 unlet s:cpo_orig
