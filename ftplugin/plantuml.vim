@@ -17,7 +17,8 @@ if exists('loaded_matchit')
         \ ',\<rnote\>:\<endrnote\>' .
         \ ',\<hnote\>:\<endhnote\>' .
         \ ',\<title\>:\<endtitle\>' .
-        \ ',\<\while\>:\<endwhile\>'
+        \ ',\<\while\>:\<endwhile\>' .
+        \ ',@startuml:@enduml'
 endif
 
 let &l:makeprg=g:plantuml_executable_script . ' %'
