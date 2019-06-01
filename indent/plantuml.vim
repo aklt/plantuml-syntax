@@ -26,16 +26,16 @@ function! GetPlantUMLIndent(...) abort
   let pline = getline(pnum)
   let cline = getline(clnum)
 
-  let incIndent = s:getIncIndent()
+  let s:incIndent = s:getIncIndent()
 
   if cline =~ s:decIndent
-    if pline =~ incIndent
+    if pline =~ s:incIndent
       return pindent
     else
       return pindent - shiftwidth()
     endif
 
-  elseif pline =~ incIndent
+  elseif pline =~ s:incIndent
     return pindent + shiftwidth()
   endif
 
@@ -62,13 +62,14 @@ endfunction
 
 function! s:typeKeywordIncPattern() abort
   " Extract keywords for plantumlTypeKeyword, returning the inc pattern
-  let syntaxWords = join(s:listSyntax('plantumlTypeKeyword'), '\|')
+  let syntaxWords = join(s:listSyntax('plantumlTypeKeyword'), '\\\|')
   return '^\s*\%(' . syntaxWords . '\)\>.*{'
 endfunction
 
 function! s:getIncIndent() abort
-  " Function to determine the incIndent pattern
+  " Function to determine the s:incIndent pattern
   return
+        \ '^\s*\%(class\|object\|interface\|partition\|rectangle\|enum\|namespace\)\>.*{\s*$\|' .
         \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\|fork\|split\)\>\|' .
         \ '^\s*ref\>[^:]*$\|' .
         \ '^\s*[hr]\?note\>\%(\%("[^"]*" \<as\>\)\@![^:]\)*$\|' .
