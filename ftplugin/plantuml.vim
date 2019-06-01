@@ -27,7 +27,9 @@ if exists('loaded_matchit')
         \ ',@startuml:@enduml'
 endif
 
-let &l:makeprg=g:plantuml_executable_script . ' %'
+if get(g:, 'plantuml_set_makeprg', 1)
+  let &l:makeprg=g:plantuml_executable_script . ' %'
+endif
 
 setlocal comments=s1:/',mb:',ex:'/,:' commentstring=/'%s'/ formatoptions-=t formatoptions+=croql
 
