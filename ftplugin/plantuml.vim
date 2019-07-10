@@ -24,7 +24,9 @@ if exists('loaded_matchit')
         \ ',\<hnote\>:\<endhnote\>' .
         \ ',\<title\>:\<endtitle\>' .
         \ ',\<\while\>:\<endwhile\>' .
-        \ ',@startuml:@enduml'
+        \ ',@startuml:@enduml' .
+        \ ',@startwbs:@endwbs' .
+        \ ',@startmindmap:@endmindmap'
 endif
 
 if get(g:, 'plantuml_set_makeprg', 1)

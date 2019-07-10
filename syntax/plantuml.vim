@@ -18,7 +18,7 @@ let b:current_syntax = 'plantuml'
 
 syntax sync minlines=100
 
-syntax match plantumlPreProc /\%(^@startuml\|^@enduml\)\|!\%(define\|definelong\|else\|enddefinelong\|endif\|exit\|if\|ifdef\|ifndef\|include\|pragma\|undef\)\s*.*/ contains=plantumlDir
+syntax match plantumlPreProc /\%(\%(^@start\|^@end\)\%(mindmap\|uml\|wbs\)\)\|!\%(define\|definelong\|else\|enddefinelong\|endif\|exit\|if\|ifdef\|ifndef\|include\|pragma\|undef\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
 syntax keyword plantumlTypeKeyword abstract actor agent archimate artifact boundary card cloud component control
@@ -77,11 +77,14 @@ syntax region plantumlNoteMultiLine start=/\%(^\s*[rh]\?note\)\@<=\s\%([^:"]\+$\
 syntax match plantumlNoteMultiLineStart /\%(^\s*[rh]\?note\)\@<=\s\%([^:]\+$\)/ contained contains=plantumlKeyword,plantumlColor,plantumlString
 
 " Class
-syntax region plantumlClass start=/\%(\%(class\|interface\|object\)\s[^{]\+\)\@<=\zs{/ end=/^\s*}/ contains=plantumlClassArrows,
-\                                                                                  plantumlClassKeyword,
-\                                                                                  @plantumlClassOp,
-\                                                                                  plantumlClassSeparator,
-\                                                                                  plantumlComment
+syntax region plantumlClass
+      \ start=/\%(\%(class\|interface\|object\)\s[^{]\+\)\@<=\zs{/
+      \ end=/^\s*}/ 
+      \ contains=plantumlClassArrows,
+      \          plantumlClassKeyword,
+      \          @plantumlClassOp,
+      \          plantumlClassSeparator,
+      \          plantumlComment
 
 syntax match plantumlClassPublic      /^\s*+\s*\w\+/ contained
 syntax match plantumlClassPrivate     /^\s*-\s*\w\+/ contained
@@ -90,9 +93,9 @@ syntax match plantumlClassPackPrivate /^\s*\~\s*\w\+/ contained
 syntax match plantumlClassSeparator   /__\%(.\+__\)\?\|==\%(.\+==\)\?\|--\%(.\+--\)\?\|\.\.\%(.\+\.\.\)\?/ contained
 
 syntax cluster plantumlClassOp contains=plantumlClassPublic,
-\                                       plantumlClassPrivate,
-\                                       plantumlClassProtected,
-\                                       plantumlClassPackPrivate
+      \                                 plantumlClassPrivate,
+      \                                 plantumlClassProtected,
+      \                                 plantumlClassPackPrivate
 
 " Strings
 syntax match plantumlSpecialString /\\n/ contained
@@ -121,6 +124,26 @@ syntax region plantumlText oneline matchgroup=plantumlSequenceDelay start=/^\.\{
 
 " Usecase diagram
 syntax match plantumlUsecaseActor /:.\{-1,}:/ contains=plantumlSpecialString
+
+" Mindmap diagram
+let s:mindmapHilightLinks = [
+      \ 'WarningMsg', 'Directory', 'Special', 'MoreMsg', 'Statement', 'Title',
+      \ 'Question', 'LineNr', 'ModeMsg', 'Title', 'MoreMsg', 'SignColumn',
+      \ 'Function', 'Todo'
+      \  ]
+
+syntax match plantumlMindmap1 /^[-+*][_<>]\?/ contained
+
+let i = 1
+let contained = []
+while i < len(s:mindmapHilightLinks)
+  execute "syntax match plantumlMindmap" . i . " /^\\%(\\s\\|[-+*]\\)\\{" . (i - 1) . "}[-+*][_<>]\\?/ contained"
+  execute "highlight default link plantumlMindmap" . i . " " . s:mindmapHilightLinks[i - 1]
+  call add(contained, "plantumlMindmap" . i)
+  let i = i + 1
+endwhile
+
+execute "syntax region plantumlMindmap oneline start=/^\\s*[-+*]_\\?/ end=/$/ contains=" . join(contained, ',')
 
 " Skinparam keywords
 syntax case ignore
