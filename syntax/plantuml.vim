@@ -37,6 +37,7 @@ syntax keyword plantumlKeyword then detach sprite
 
 syntax keyword plantumlCommentTODO XXX TODO FIXME NOTE contained
 syntax match plantumlColor /#[0-9A-Fa-f]\{6\}\>/
+syntax case ignore
 syntax keyword plantumlColor APPLICATION AliceBlue AntiqueWhite Aqua Aquamarine Azure BUSINESS Beige Bisque
 syntax keyword plantumlColor Black BlanchedAlmond Blue BlueViolet Brown BurlyWood CadetBlue Chartreuse
 syntax keyword plantumlColor Chocolate Coral CornflowerBlue Cornsilk Crimson Cyan DarkBlue DarkCyan
@@ -58,6 +59,7 @@ syntax keyword plantumlColor RosyBrown RoyalBlue STRATEGY SaddleBrown Salmon San
 syntax keyword plantumlColor Sienna Silver SkyBlue SlateBlue SlateGray SlateGrey Snow SpringGreen SteelBlue
 syntax keyword plantumlColor TECHNOLOGY Tan Teal Thistle Tomato Turquoise Violet Wheat White WhiteSmoke
 syntax keyword plantumlColor Yellow YellowGreen
+syntax case match
 
 " Arrows
 syntax match plantumlArrow /.\@=\([.-]\)\1\+\ze\s*\%(\w\|(\)/
