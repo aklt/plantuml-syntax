@@ -134,6 +134,7 @@ syntax region plantumlText oneline matchgroup=plantumlSequenceDelay start=/^\.\{
 " Usecase diagram
 syntax match plantumlUsecaseActor /:.\{-1,}:/ contains=plantumlSpecialString
 
+
 " Mindmap diagram
 let s:mindmapHilightLinks = [
       \ 'WarningMsg', 'Directory', 'Special', 'MoreMsg', 'Statement', 'Title',
@@ -144,13 +145,17 @@ let s:mindmapHilightLinks = [
 let i = 1
 let contained = []
 while i < len(s:mindmapHilightLinks)
-  execute 'syntax match plantumlMindmap' . i . ' /^\%(\s\|[-+*]\)\{' . (i - 1) . '}[-+*][_<>]\?/ contained'
+  execute 'syntax match plantumlMindmap' . i . ' /^\([-+*]\)\1\{' . (i - 1) . '}_\?\s\+/ contained'
+  execute 'syntax match plantumlMindmap' . i . ' /^\s\{' . (i - 1) . '}\*_\?\s\+/ contained'
   execute 'highlight default link plantumlMindmap' . i . ' ' . s:mindmapHilightLinks[i - 1]
   call add(contained, 'plantumlMindmap' . i)
   let i = i + 1
 endwhile
 
-execute 'syntax region plantumlMindmap oneline start=/^\s*[-+*]_\?/ end=/$/ contains=' . join(contained, ',')
+execute 'syntax region plantumlMindmap oneline start=/^\([-+*]\)\1*_\?\s/ end=/$/ contains=' . join(contained, ',')
+" Markdown syntax
+execute 'syntax region plantumlMindmap oneline start=/^\s*\*_\?\s/ end=/$/ contains=' . join(contained, ',')
+
 
 " Skinparam keywords
 syntax case ignore
