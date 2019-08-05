@@ -141,18 +141,16 @@ let s:mindmapHilightLinks = [
       \ 'Function', 'Todo'
       \  ]
 
-syntax match plantumlMindmap1 /^[-+*][_<>]\?/ contained
-
 let i = 1
 let contained = []
 while i < len(s:mindmapHilightLinks)
-  execute "syntax match plantumlMindmap" . i . " /^\\%(\\s\\|[-+*]\\)\\{" . (i - 1) . "}[-+*][_<>]\\?/ contained"
-  execute "highlight default link plantumlMindmap" . i . " " . s:mindmapHilightLinks[i - 1]
-  call add(contained, "plantumlMindmap" . i)
+  execute 'syntax match plantumlMindmap' . i . ' /^\%(\s\|[-+*]\)\{' . (i - 1) . '}[-+*][_<>]\?/ contained'
+  execute 'highlight default link plantumlMindmap' . i . ' ' . s:mindmapHilightLinks[i - 1]
+  call add(contained, 'plantumlMindmap' . i)
   let i = i + 1
 endwhile
 
-execute "syntax region plantumlMindmap oneline start=/^\\s*[-+*]_\\?/ end=/$/ contains=" . join(contained, ',')
+execute 'syntax region plantumlMindmap oneline start=/^\s*[-+*]_\?/ end=/$/ contains=' . join(contained, ',')
 
 " Skinparam keywords
 syntax case ignore
