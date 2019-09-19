@@ -2,7 +2,7 @@
 
 This is a vim syntax file for [PlantUML](http://plantuml.com).
 
-The `filetype` will be set to `plantuml` for `*.pu`, `*.uml`, `*.puml` or
+The `filetype` will be set to `plantuml` for `*.pu`, `*.uml`, `*.puml`, `*.iuml` or
 `*.plantuml` files or if the first line of a file contains `@startuml`.
 
 Additionally the `makeprg` is set to `plantuml` assuming you have this

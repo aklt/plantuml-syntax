@@ -5,5 +5,5 @@ scriptencoding utf-8
 " License:      VIM LICENSE
 augroup PlantUML
   autocmd BufRead,BufNewFile * if !did_filetype() && getline(1) =~# '@startuml\>'| setfiletype plantuml | endif
-  autocmd BufRead,BufNewFile *.pu,*.uml,*.plantuml,*.puml set filetype=plantuml
+  autocmd BufRead,BufNewFile *.pu,*.uml,*.plantuml,*.puml,*.iuml set filetype=plantuml
 augroup END
