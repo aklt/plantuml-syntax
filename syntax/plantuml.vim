@@ -32,7 +32,7 @@ syntax keyword plantumlClassKeyword class interface
 " Exclude 'top to bottom direction'
 syntax keyword plantumlKeyword accross activate again allow_mixing allowmixing also alt as autonumber bottom
 syntax keyword plantumlKeyword box break caption center create critical deactivate destroy down else elseif end
-syntax keyword plantumlKeyword endif endwhile footbox footer fork group header hide hnote if is kill left in at are to the
+syntax keyword plantumlKeyword endif endwhile footbox footer fork group header hide hnote if is kill left in at are to the and
 syntax keyword plantumlKeyword legend link loop mainframe namespace newpage note of on opt order over package
 syntax keyword plantumlKeyword page par partition ref repeat return right rnote rotate show skin skinparam
 syntax keyword plantumlKeyword start stop title top up while
@@ -40,7 +40,7 @@ syntax keyword plantumlKeyword start stop title top up while
 syntax keyword plantumlKeyword then detach split sprite
 " gantt
 syntax keyword plantumlTypeKeyword project monday tuesday wednesday thursday friday saturday sunday
-syntax keyword plantumlKeyword starts closed day after colored lasts end
+syntax keyword plantumlKeyword starts ends start end closed day after colored lasts happens
 
 
 syntax keyword plantumlCommentTODO XXX TODO FIXME NOTE contained
