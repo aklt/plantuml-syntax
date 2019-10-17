@@ -23,7 +23,7 @@ syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
 " type
 syntax keyword plantumlTypeKeyword abstract actor agent archimate artifact boundary card cloud component control
-syntax keyword plantumlTypeKeyword database diamond entity enum file folder frame node object package participant
+syntax keyword plantumlTypeKeyword database diamond entity enum file folder frame node object robust concise package participant
 syntax keyword plantumlTypeKeyword queue rectangle stack state storage usecase
 " class and interface are defined as plantumlClassKeyword
 syntax keyword plantumlClassKeyword class interface
@@ -33,7 +33,7 @@ syntax keyword plantumlClassKeyword class interface
 syntax keyword plantumlKeyword accross activate again allow_mixing allowmixing also alt as autonumber bottom
 syntax keyword plantumlKeyword box break caption center create critical deactivate destroy down else elseif end
 syntax keyword plantumlKeyword endif endwhile footbox footer fork group header hide hnote if is kill left in at are to the and
-syntax keyword plantumlKeyword legend link loop mainframe namespace newpage note of on opt order over package
+syntax keyword plantumlKeyword legend endlegend link loop mainframe namespace newpage note of on opt order over package
 syntax keyword plantumlKeyword page par partition ref repeat return right rnote rotate show skin skinparam
 syntax keyword plantumlKeyword start stop title top up while
 " Not in 'java - jar plantuml.jar - language' output
