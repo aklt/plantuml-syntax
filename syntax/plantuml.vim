@@ -4,7 +4,7 @@ scriptencoding utf-8
 " Maintainer:   Anders Thøgersen <first name at bladre dot dk>
 " License:      VIM LICENSE
 if exists('b:current_syntax')
-  finish
+  " finish
 endif
 
 if v:version < 600
@@ -82,8 +82,8 @@ syntax region plantumlText oneline start=/\[/ms=s+1 end=/\]/me=s-1 contained
 
 syntax match plantumlArrowDirectedLine /\([-.]\)\%(l\%[eft]\|r\%[ight]\|up\?\|d\%[own]\)\1/ contained
 
-" Note
-syntax region plantumlNoteMultiLine start=/\%(^\s*[rh]\?\%(note\|legend\)\)\@<=\s\%([^:"]\+$\)\@=/ end=/^\%(\s*end \?[rh]\?\%(note\|legend\)$\)\@=/ contains=plantumlSpecialString,plantumlNoteMultiLineStart,plantumlTag
+" Note and legend
+syntax region plantumlNoteMultiLine start=/\%(^\s*[rh]\?\%(note\|legend\)\)\@<=\s\%([^:"]\+$\)\@=/ end=/^\%(\s*end\s*[rh]\?\%(note\|legend\)$\)\|endlegend\@=/ contains=plantumlSpecialString,plantumlNoteMultiLineStart,plantumlTag
 syntax match plantumlNoteMultiLineStart /\%(^\s*[rh]\?\%(note\|legend\)\)\@<=\s\%([^:]\+$\)/ contained contains=plantumlKeyword,plantumlColor,plantumlString,plantumlTag
 
 " Class
