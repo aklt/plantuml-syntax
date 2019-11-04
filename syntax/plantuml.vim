@@ -22,11 +22,15 @@ syntax match plantumlPreProc /\%(\%(^@start\|^@end\)\%(dot\|mindmap\|uml\|salt\|
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
 " type
+" From 'java - jar plantuml.jar - language' results {{{
 syntax keyword plantumlTypeKeyword abstract actor agent archimate artifact boundary card cloud component control
 syntax keyword plantumlTypeKeyword database detach diamond entity enum file folder frame node object package
 syntax keyword plantumlTypeKeyword participant queue rectangle stack state storage usecase
 " class and interface are defined as plantumlClassKeyword
 syntax keyword plantumlClassKeyword class interface
+"}}}
+" Not in 'java - jar plantuml.jar - language' results
+syntax keyword plantumlTypeKeyword concise robust
 
 " keyword
 " Exclude 'top to bottom direction'
