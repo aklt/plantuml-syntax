@@ -142,7 +142,8 @@ syntax match plantumlSequenceDelay /^\.\{3}$/
 syntax region plantumlText oneline matchgroup=plantumlSequenceDelay start=/^\.\{3}/ end=/\.\{3}$/
 
 " Usecase diagram
-syntax match plantumlUsecaseActor /^:.\{-1,}:/ contains=plantumlSpecialString
+syntax match plantumlUsecaseActor /^\s*:.\{-1,}:/ contains=plantumlSpecialString
+
 
 " Mindmap diagram
 let s:mindmapHilightLinks = [
