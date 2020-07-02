@@ -138,8 +138,8 @@ syntax match plantumlActivityLabel /\%(^\%(#\S\+\)\?\)\@<=:\_[^;|<>/\]}]\+[;|<>/
 syntax match plantumlSequenceDivider /^\s*==[^=]\+==\s*$/
 syntax match plantumlSequenceSpace /^\s*|||\+\s*$/
 syntax match plantumlSequenceSpace /^\s*||\d\+||\+\s*$/
-syntax match plantumlSequenceDelay /^\.\{3}$/
-syntax region plantumlText oneline matchgroup=plantumlSequenceDelay start=/^\.\{3}/ end=/\.\{3}$/
+syntax match plantumlSequenceDelay /^\s*\.\{3}$/
+syntax region plantumlText oneline matchgroup=plantumlSequenceDelay start=/^\s*\.\{3}/ end=/\.\{3}$/
 
 " Usecase diagram
 syntax match plantumlUsecaseActor /^\s*:.\{-1,}:/ contains=plantumlSpecialString
