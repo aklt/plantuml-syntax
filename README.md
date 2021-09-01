@@ -15,3 +15,5 @@ java -jar $HOME/lib/java/plantuml.jar -tsvg $@
 
 You can change the name of this file by setting `g:plantuml_executable_script`
 and disable this feature by setting `g:plantuml_set_makeprg` to `0`.
+
+See examples here: [Plantuml Syntax](https://aklt.github.io/plantuml/).
