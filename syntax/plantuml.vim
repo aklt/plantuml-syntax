@@ -154,14 +154,14 @@ let s:mindmapHilightLinks = [
       \ 'Function', 'Todo'
       \  ]
 
-let i = 1
+let s:i = 1
 let contained = []
-while i < len(s:mindmapHilightLinks)
-  execute 'syntax match plantumlMindmap' . i . ' /^\([-+*]\)\1\{' . (i - 1) . '}_\?\s\+/ contained'
-  execute 'syntax match plantumlMindmap' . i . ' /^\s\{' . (i - 1) . '}\*_\?\s\+/ contained'
-  execute 'highlight default link plantumlMindmap' . i . ' ' . s:mindmapHilightLinks[i - 1]
-  call add(contained, 'plantumlMindmap' . i)
-  let i = i + 1
+while s:i < len(s:mindmapHilightLinks)
+  execute 'syntax match plantumlMindmap' . s:i . ' /^\([-+*]\)\1\{' . (s:i - 1) . '}_\?\s\+/ contained'
+  execute 'syntax match plantumlMindmap' . s:i . ' /^\s\{' . (s:i - 1) . '}\*_\?\s\+/ contained'
+  execute 'highlight default link plantumlMindmap' . s:i . ' ' . s:mindmapHilightLinks[s:i - 1]
+  call add(contained, 'plantumlMindmap' . s:i)
+  let s:i = s:i + 1
 endwhile
 
 execute 'syntax region plantumlMindmap oneline start=/^\([-+*]\)\1*_\?\s/ end=/$/ contains=' . join(contained, ',')
