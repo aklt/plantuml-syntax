@@ -155,18 +155,18 @@ let s:mindmapHilightLinks = [
       \  ]
 
 let s:i = 1
-let contained = []
+let s:contained = []
 while s:i < len(s:mindmapHilightLinks)
   execute 'syntax match plantumlMindmap' . s:i . ' /^\([-+*]\)\1\{' . (s:i - 1) . '}_\?\s\+/ contained'
   execute 'syntax match plantumlMindmap' . s:i . ' /^\s\{' . (s:i - 1) . '}\*_\?\s\+/ contained'
   execute 'highlight default link plantumlMindmap' . s:i . ' ' . s:mindmapHilightLinks[s:i - 1]
-  call add(contained, 'plantumlMindmap' . s:i)
+  call add(s:contained, 'plantumlMindmap' . s:i)
   let s:i = s:i + 1
 endwhile
 
-execute 'syntax region plantumlMindmap oneline start=/^\([-+*]\)\1*_\?\s/ end=/$/ contains=' . join(contained, ',')
+execute 'syntax region plantumlMindmap oneline start=/^\([-+*]\)\1*_\?\s/ end=/$/ contains=' . join(s:contained, ',')
 " Markdown syntax
-execute 'syntax region plantumlMindmap oneline start=/^\s*\*_\?\s/ end=/$/ contains=' . join(contained, ',')
+execute 'syntax region plantumlMindmap oneline start=/^\s*\*_\?\s/ end=/$/ contains=' . join(s:contained, ',')
 
 
 " Skinparam keywords
