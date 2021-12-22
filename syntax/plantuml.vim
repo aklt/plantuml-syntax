@@ -160,14 +160,16 @@ let s:mindmap_color = '\(\[#[^\]]\+\]\)\?'
 let s:mindmap_removing_box = '_\?'
 let s:mindmap_options = join([s:mindmap_color, s:mindmap_removing_box], '')
 while s:i < len(s:mindmapHilightLinks)
-  execute 'syntax match plantumlMindmap' . s:i . ' /^\([-+*]\)\1\{' . (s:i - 1) . '}' . s:mindmap_options . '\s\+/ contained'
-  execute 'syntax match plantumlMindmap' . s:i . ' /^\s\{' . (s:i - 1) . '}\*' . s:mindmap_options . '\s\+/ contained'
+  execute 'syntax match plantumlMindmap' . s:i . ' /^\([-+*]\)\1\{' . (s:i - 1) . '}' . s:mindmap_options . '\(:\|\s\+\)/ contained'
+  execute 'syntax match plantumlMindmap' . s:i . ' /^\s\{' . (s:i - 1) . '}\*' . s:mindmap_options . '\(:\|\s\+\)/ contained'
   execute 'highlight default link plantumlMindmap' . s:i . ' ' . s:mindmapHilightLinks[s:i - 1]
   call add(s:contained, 'plantumlMindmap' . s:i)
   let s:i = s:i + 1
 endwhile
 
 execute 'syntax region plantumlMindmap oneline start=/^\([-+*]\)\1*' . s:mindmap_options . '\s/ end=/$/ contains=' . join(s:contained, ',')
+" Multilines
+execute 'syntax region plantumlMindmap start=/^\([-+*]\)\1*' . s:mindmap_options . ':/ end=/;$/ contains=' . join(s:contained, ',')
 " Markdown syntax
 execute 'syntax region plantumlMindmap oneline start=/^\s*\*' . s:mindmap_options . '\s/ end=/$/ contains=' . join(s:contained, ',')
 
