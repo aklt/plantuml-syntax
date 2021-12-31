@@ -388,6 +388,10 @@ syntax keyword plantumlSkinparamKeyword usecaseActorStereotypeFontStyle usecaseA
 syntax keyword plantumlSkinparamKeyword usecaseArrowFontName usecaseArrowFontSize usecaseArrowFontStyle
 syntax case match
 
+" Builtin Function
+" https://plantuml.com/ja/preprocessing
+syntax match plantumlBuiltinFunction /%\%(chr\|darken\|date\|dec2hex\|dirpath\|feature\|false\|file_exists\|filename\|function_exists\|get_variable_value\|getenv\|hex2dec\|hsl_color\|intval\|is_dark\|is_light\|lighten\|loadJSON\|lower\|newline\|not\|lighten\|reverse_color\|reverse_hsluv_color\|set_variable_value\|size\|string\|strlen\|strpos\|substr\|true\|upper\|variable_exists\|version\)/
+
 " Highlight
 highlight default link plantumlCommentTODO Todo
 highlight default link plantumlKeyword Keyword
@@ -426,6 +430,7 @@ highlight default link plantumlSkinparamKeyword Identifier
 highlight default link plantumlNoteMultiLine String
 highlight default link plantumlUsecaseActor String
 highlight default link plantumlStereotype Type
+highlight default link plantumlBuiltinFunction Function
 
 let &cpoptions=s:cpo_orig
 unlet s:cpo_orig
