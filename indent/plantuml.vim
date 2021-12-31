@@ -17,7 +17,7 @@ if exists('*GetPlantUMLIndent')
   finish
 endif
 
-let s:decIndent = '^\s*\%(end\|else\|}\)'
+let s:decIndent = '^\s*\%(end\|else\|fork again\|}\)'
 
 function! GetPlantUMLIndent(...) abort
   "for current line, use arg if given or v:lnum otherwise
