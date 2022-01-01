@@ -173,8 +173,8 @@ execute 'syntax region plantumlMindmap start=/^\([-+*]\)\1*' . s:mindmap_options
 " Markdown syntax
 execute 'syntax region plantumlMindmap oneline start=/^\s*\*' . s:mindmap_options . '\s/ end=/$/ contains=' . join(s:contained, ',')
 
-" Component diagram
-syntax match plantumlComponent /\[[^\]]\{-}\]/ contains=plantumlSpecialString
+" Gantt diagram
+syntax match plantumlGanttTask /\[[^\]]\{-}\]\%('s\)\?/ contains=plantumlSpecialString
 
 
 " Skinparam keywords
@@ -414,7 +414,7 @@ highlight default link plantumlSkinparamKeyword Identifier
 highlight default link plantumlNoteMultiLine String
 highlight default link plantumlUsecaseActor String
 highlight default link plantumlStereotype Type
-highlight default link plantumlComponent Type
+highlight default link plantumlGanttTask Type
 
 let &cpoptions=s:cpo_orig
 unlet s:cpo_orig
