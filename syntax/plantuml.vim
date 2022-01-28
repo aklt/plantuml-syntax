@@ -123,8 +123,8 @@ syntax cluster plantumlClassOp contains=plantumlClassPublic,
 " Strings
 syntax match plantumlSpecialString /\\n/ contained
 syntax region plantumlString start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=plantumlSpecialString
-syntax region plantumlString start=/'/ skip=/\\\\\|\\'/ end=/'/ contains=plantumlSpecialString
-syntax match plantumlComment /'.*$/ contains=plantumlCommentTODO
+syntax region plantumlString start=/'/ skip=/\\\\\|\\'/ end=/'/ oneline contains=plantumlSpecialString
+syntax match plantumlComment /^\s*'.*$/ contains=plantumlCommentTODO
 syntax region plantumlMultilineComment start=/\/'/ end=/'\// contains=plantumlCommentTODO
 
 syntax match plantumlTag /<\/\?[bi]>/
@@ -177,6 +177,9 @@ execute 'syntax region plantumlMindmap oneline start=/^\([-+*]\)\1*' . s:mindmap
 execute 'syntax region plantumlMindmap start=/^\([-+*]\)\1*' . s:mindmap_options . ':/ end=/;$/ contains=' . join(s:contained, ',')
 " Markdown syntax
 execute 'syntax region plantumlMindmap oneline start=/^\s*\*' . s:mindmap_options . '\s/ end=/$/ contains=' . join(s:contained, ',')
+
+" Gantt diagram
+syntax match plantumlGanttTask /\[[^\]]\{-}\]\%('s\)\?/ contains=plantumlSpecialString
 
 
 " Skinparam keywords
@@ -431,6 +434,7 @@ highlight default link plantumlNoteMultiLine String
 highlight default link plantumlUsecaseActor String
 highlight default link plantumlStereotype Type
 highlight default link plantumlBuiltinFunction Function
+highlight default link plantumlGanttTask Type
 
 let &cpoptions=s:cpo_orig
 unlet s:cpo_orig
