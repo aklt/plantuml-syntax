@@ -1,7 +1,6 @@
 scriptencoding utf-8
 " Vim filetype plugin file
 " Language:     PlantUML
-" Maintainer:   Anders Thøgersen <first name at bladre dot dk>
 " License:      VIM LICENSE
 
 if exists('b:loaded_plantuml_plugin')

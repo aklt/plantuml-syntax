@@ -1,10 +1,9 @@
 scriptencoding utf-8
 " Vim syntax file
 " Language:     PlantUML
-" Maintainer:   Anders Thøgersen <first name at bladre dot dk>
 " License:      VIM LICENSE
 if exists('b:current_syntax')
-  " finish
+  finish
 endif
 
 if v:version < 600
