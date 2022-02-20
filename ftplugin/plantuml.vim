@@ -1,4 +1,3 @@
-scriptencoding utf-8
 " Vim filetype plugin file
 " Language:     PlantUML
 " License:      VIM LICENSE

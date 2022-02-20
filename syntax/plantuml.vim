@@ -1,4 +1,3 @@
-scriptencoding utf-8
 " Vim syntax file
 " Language:     PlantUML
 " License:      VIM LICENSE

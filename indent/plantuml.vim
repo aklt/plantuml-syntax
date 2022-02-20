@@ -1,4 +1,3 @@
-scriptencoding utf-8
 " Vim indent file
 " Language:     PlantUML
 " License:      VIM LICENSE
