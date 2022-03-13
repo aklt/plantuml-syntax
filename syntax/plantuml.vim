@@ -37,7 +37,7 @@ syntax keyword plantumlTypeKeyword concise robust
 " Since "syntax keyword" can handle only words, "top to bottom direction", "left to right direction" are excluded.
 syntax keyword plantumlKeyword across activate again allow_mixing allowmixing also alt as autonumber bold
 syntax keyword plantumlKeyword bottom box break caption center circle color create critical dashed deactivate
-syntax keyword plantumlKeyword description destroy detach dotted down else elseif empty end endif endwhile
+syntax keyword plantumlKeyword description destroy detach dotted down else elseif empty end endif endrnote endhnote endwhile
 syntax keyword plantumlKeyword false footbox footer fork group header hide hnote if is italic kill left legend
 syntax keyword plantumlKeyword link loop mainframe map members namespace newpage normal note of on opt order
 syntax keyword plantumlKeyword over package page par partition plain ref repeat return right rnote rotate show
