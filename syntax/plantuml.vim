@@ -55,7 +55,8 @@ syntax keyword plantumlKeyword printscale ganttscale projectscale daily weekly m
 syntax keyword plantumlKeyword day days week weeks today then complete displays same row pauses
 
 syntax keyword plantumlCommentTODO XXX TODO FIXME NOTE contained
-syntax match plantumlColor /#[0-9A-Fa-f]\{6\}\>/
+" PlantUML colors can be 8 digits long do code transparency
+syntax match plantumlColor /#[0-9A-Fa-f]\{6,8\}\>/
 syntax case ignore
 syntax keyword plantumlColor APPLICATION AliceBlue AntiqueWhite Aqua Aquamarine Azure BUSINESS Beige Bisque
 syntax keyword plantumlColor Black BlanchedAlmond Blue BlueViolet Brown BurlyWood CadetBlue Chartreuse
