@@ -40,7 +40,7 @@ syntax keyword plantumlKeyword bottom box break caption center circle color crea
 syntax keyword plantumlKeyword description destroy detach dotted down else elseif empty end endif endwhile
 syntax keyword plantumlKeyword false footbox footer fork group header hide hnote if is italic kill left legend
 syntax keyword plantumlKeyword link loop mainframe map members namespace newpage normal note of on opt order
-syntax keyword plantumlKeyword over package page par partition plain ref repeat return right rnote rotate show
+syntax keyword plantumlKeyword over page par partition plain ref repeat return right rnote rotate show
 syntax keyword plantumlKeyword skin skinparam split sprite start stereotype stop style then title top true up
 syntax keyword plantumlKeyword while
 
