@@ -25,7 +25,7 @@ syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 syntax keyword plantumlTypeKeyword abstract actor agent annotation archimate artifact boundary card cloud
 syntax keyword plantumlTypeKeyword collections component control database diamond entity enum file folder frame
 syntax keyword plantumlTypeKeyword hexagon label node object package participant person queue rectangle stack state
-syntax keyword plantumlTypeKeyword storage usecase
+syntax keyword plantumlTypeKeyword storage usecase together
 " class and interface are defined as plantumlClassKeyword
 syntax keyword plantumlClassKeyword class interface
 "}}}
