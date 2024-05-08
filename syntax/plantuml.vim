@@ -20,6 +20,10 @@ syntax match plantumlPreProc /\%(^@start\|^@end\)\%(board\|bpm\|creole\|cute\|de
 syntax match plantumlPreProc /!\%(assert\|define\|definelong\|dump_memory\|else\|enddefinelong\|endfunction\|endif\|endprocedure\|endsub\|exit\|function\|if\|ifdef\|ifndef\|import\|include\|local\|log\|pragma\|procedure\|return\|startsub\|theme\|undef\|unquoted\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 
+" Procedure and function definitions
+syntax region plantumlParameters contained matchgroup=Function keepend start="(" end=")\s*$" contains=TOP
+syntax match plantumlFunction "\%(!\%(unquoted\s\+\)\?\%(procedure\|function\)\s*\)\@<=\$\?\w\+\s*(.*)" contains=plantumlParameters
+
 " type
 " From 'java - jar plantuml.jar - language' results {{{
 syntax keyword plantumlTypeKeyword abstract actor agent annotation archimate artifact boundary card cloud
@@ -432,6 +436,7 @@ highlight default link plantumlNoteMultiLine String
 highlight default link plantumlUsecaseActor String
 highlight default link plantumlStereotype Type
 highlight default link plantumlBuiltinFunction Function
+highlight default link plantumlFunction Function
 highlight default link plantumlGanttTask Type
 
 let &cpoptions=s:cpo_orig
