@@ -17,8 +17,13 @@ let b:current_syntax = 'plantuml'
 syntax sync minlines=100
 
 syntax match plantumlPreProc /\%(^@start\|^@end\)\%(board\|bpm\|creole\|cute\|def\|ditaa\|dot\|flow\|gantt\|git\|jcckit\|json\|latex\|math\|mindmap\|nwdiag\|project\|salt\|tree\|uml\|wbs\|wire\|yaml\)/
-syntax match plantumlPreProc /!\%(assert\|define\|definelong\|dump_memory\|else\|enddefinelong\|endfunction\|endif\|endprocedure\|endsub\|exit\|function\|if\|ifdef\|ifndef\|import\|include\|local\|log\|pragma\|procedure\|return\|startsub\|theme\|undef\|unquoted\)\s*.*/ contains=plantumlDir
+syntax match plantumlPreProc /function\|procedure\|endprocedure\|endfunction\|unquoted/
+syntax match plantumlPreProc /!\%(assert\|define\|definelong\|dump_memory\|else\|enddefinelong\|endif\|endsub\|exit\if\|ifdef\|ifndef\|import\|include\|local\|log\|pragma\|return\|startsub\|theme\|undef\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
+
+" Procedure and function definitions
+syntax region plantumlParameters contained matchgroup=Function keepend start="(" end=")\s*$" contains=TOP
+syntax match plantumlFunction "\%(!\%(unquoted\s\+\)\?\%(procedure\|function\)\s*\)\@<=\$\?\w\+\s*(.*)" contains=plantumlParameters
 
 " type
 " From 'java - jar plantuml.jar - language' results {{{
@@ -441,6 +446,7 @@ highlight default link plantumlNoteMultiLine String
 highlight default link plantumlUsecaseActor String
 highlight default link plantumlStereotype Type
 highlight default link plantumlBuiltinFunction Function
+highlight default link plantumlFunction Function
 highlight default link plantumlGanttTask Type
 
 let &cpoptions=s:cpo_orig
