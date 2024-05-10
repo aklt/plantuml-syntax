@@ -390,6 +390,14 @@ syntax keyword plantumlSkinparamKeyword usecaseActorStereotypeFontStyle usecaseA
 syntax keyword plantumlSkinparamKeyword usecaseArrowFontName usecaseArrowFontSize usecaseArrowFontStyle
 syntax case match
 
+" Other style keywords not found in plantumlSkinparamKeyword
+" Some are not implemented (yet)
+" see https://plantuml.com/fr/style-evolution
+" TODO: put those keywords in a new "<style>" region
+syntax case ignore
+syntax keyword plantumlSkinparamKeyword Margin HorizontalAlignment DiagonalCorner ExportedName Image ImagePosition MinimumWidth WordWrap MaximumWidth
+syntax case match
+
 " Builtin Function
 " https://plantuml.com/ja/preprocessing
 syntax match plantumlBuiltinFunction /%\%(chr\|darken\|date\|dec2hex\|dirpath\|feature\|false\|file_exists\|filename\|function_exists\|get_variable_value\|getenv\|hex2dec\|hsl_color\|intval\|is_dark\|is_light\|lighten\|loadJSON\|lower\|newline\|not\|lighten\|reverse_color\|reverse_hsluv_color\|set_variable_value\|size\|string\|strlen\|strpos\|substr\|true\|upper\|variable_exists\|version\)/
