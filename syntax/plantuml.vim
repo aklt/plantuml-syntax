@@ -25,7 +25,7 @@ syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
 syntax keyword plantumlTypeKeyword abstract actor agent annotation archimate artifact boundary card cloud
 syntax keyword plantumlTypeKeyword collections component control database diamond entity enum file folder frame
 syntax keyword plantumlTypeKeyword hexagon label node object package participant person queue rectangle stack state
-syntax keyword plantumlTypeKeyword storage usecase
+syntax keyword plantumlTypeKeyword storage usecase together
 " class and interface are defined as plantumlClassKeyword
 syntax keyword plantumlClassKeyword class interface
 "}}}
@@ -40,7 +40,7 @@ syntax keyword plantumlKeyword bottom box break caption center circle color crea
 syntax keyword plantumlKeyword description destroy detach dotted down else elseif empty end endif endwhile
 syntax keyword plantumlKeyword false footbox footer fork group header hide hnote if is italic kill left legend
 syntax keyword plantumlKeyword link loop mainframe map members namespace newpage normal note of on opt order
-syntax keyword plantumlKeyword over package page par partition plain ref repeat return right rnote rotate show
+syntax keyword plantumlKeyword over page par partition plain ref repeat return right rnote rotate show
 syntax keyword plantumlKeyword skin skinparam split sprite start stereotype stop style then title top true up
 syntax keyword plantumlKeyword while
 
@@ -129,7 +129,7 @@ syntax match plantumlTag /<\/\?[bi]>/
 syntax region plantumlTag start=/<\/\?\%(back\|color\|del\|font\|img\|s\|size\|strike\|u\|w\)/ end=/>/
 
 " Labels with a colon
-syntax match plantumlColonLine /\S\@<=\s*\zs : .\+$/ contains=plantumlSpecialString
+syntax match plantumlColonLine /\S\@<=\s*:\s*\zs.\+$/ contains=plantumlSpecialString
 
 " Stereotypes
 syntax match plantumlStereotype /<<[^-.]\+>>/ contains=plantumlSpecialString
