@@ -16,7 +16,7 @@ let b:current_syntax = 'plantuml'
 
 syntax sync minlines=100
 
-syntax match plantumlPreProc /\%(^@start\|^@end\)\%(board\|bpm\|chronology\|creole\|cute\|def\|ditaa\|dot\|ebnf\|files\|flow\|gantt\|git\|hcl\|jcckit\|json\|latex\|math\|mindmap\|nwdiag\|project\|regex\|salt\|tree\|uml\|wbs\|wire\|yaml\)/
+syntax match plantumlPreProc /\%(^@start\|^@end\)\%(board\|bpm\|chen\|chronology\|creole\|cute\|def\|ditaa\|dot\|ebnf\|files\|flow\|gantt\|git\|hcl\|jcckit\|json\|latex\|math\|mindmap\|nwdiag\|project\|regex\|salt\|tree\|uml\|wbs\|wire\|yaml\)/
 syntax match plantumlPreProc /!\?\%(function\|procedure\|endprocedure\|endfunction\|unquoted\)/
 syntax match plantumlPreProc /!\%(assert\|define\|definelong\|dump_memory\|else\|enddefinelong\|endif\|endsub\|exit\|if\|ifdef\|ifndef\|import\|include\|local\|log\|pragma\|return\|startsub\|theme\|undef\)\s*.*/ contains=plantumlDir
 syntax region plantumlDir start=/\s\+/ms=s+1 end=/$/ contained
@@ -30,7 +30,7 @@ syntax match plantumlFunction "\%(!\%(unquoted\s\+\)\?\%(procedure\|function\)\s
 syntax keyword plantumlTypeKeyword abstract action actor agent annotation archimate artifact boundary card cloud
 syntax keyword plantumlTypeKeyword collections component control database diamond entity enum exception file folder
 syntax keyword plantumlTypeKeyword frame hexagon json label map metaclass node object package participant person
-syntax keyword plantumlTypeKeyword process protocol queue rectangle stack state storage struct usecase
+syntax keyword plantumlTypeKeyword process protocol queue rectangle relationship stack state storage struct usecase
 " class and interface are defined as plantumlClassKeyword
 syntax keyword plantumlClassKeyword class interface
 "}}}
