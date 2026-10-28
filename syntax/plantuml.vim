@@ -32,7 +32,7 @@ syntax keyword plantumlTypeKeyword collections component control database diamon
 syntax keyword plantumlTypeKeyword frame hexagon json label map metaclass node object package participant person
 syntax keyword plantumlTypeKeyword process protocol queue rectangle relationship stack state storage struct usecase
 " class and interface are defined as plantumlClassKeyword
-syntax keyword plantumlClassKeyword class interface
+syntax keyword plantumlClassKeyword class interface table
 "}}}
 " Not in 'java - jar plantuml.jar - language' results
 syntax keyword plantumlTypeKeyword concise robust

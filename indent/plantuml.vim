@@ -15,7 +15,7 @@ if exists('*GetPlantUMLIndent')
   finish
 endif
 
-let s:decIndent = '^\s*\%(end\|else\|fork again\|}\)'
+let s:decIndent = '^\s*\%(deactivate\|end\|else\|fork again\|return\|}\)'
 
 function! GetPlantUMLIndent(...) abort
   "for current line, use arg if given or v:lnum otherwise
@@ -73,8 +73,8 @@ endfunction
 function! s:getIncIndent() abort
   " Function to determine the s:incIndent pattern
   return
-        \ '^\s*\%(artifact\|class\|cloud\|database\|entity\|enum\|file\|folder\|frame\|interface\|namespace\|node\|object\|package\|partition\|rectangle\|skinparam\|state\|storage\|together\)\>.*{\s*$\|' .
-        \ '^\s*\%(loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\|fork\|split\)\>\|' .
+        \ '^\s*\%(artifact\|class\|cloud\|database\|entity\|enum\|file\|folder\|frame\|interface\|namespace\|node\|object\|package\|partition\|rectangle\|skinparam\|state\|storage\|table\|together\)\>.*{\s*$\|' .
+        \ '^\s*\%(activate\|loop\|alt\|opt\|group\|critical\|else\|legend\|box\|if\|while\|fork\|split\)\>\|' .
         \ '^\s*ref\>[^:]*$\|' .
         \ '^\s*[hr]\?note\>\%(\%("[^"]*" \<as\>\)\@![^:]\)*$\|' .
         \ '^\s*title\s*$\|' .
